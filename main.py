@@ -13,7 +13,7 @@ class Shape_Design:
 class Draw_Shapes:
     def __init__(self, num_patterns):
         self.shapes = ["square", "triangle", "circle"]
-        self.colors = ["red", "orange", "yellow", "green", "blue", "pink", "purple"]
+        self.colors = ["red", "yellow", "orange", "blue", "green", "pink", "purple"]
         self.num_patterns = num_patterns
         self.tloc = -100
         self.xloc = -180
@@ -47,15 +47,16 @@ class Draw_Shapes:
         draw.turtle.end_fill()
         draw.turtle.penup()
 
-num_patterns = input("How many patterns do you want? (No more than 5) ")
+while True:
+    num_patterns = input("How many patterns do you want? (No more than 5) ")
 
-if not num_patterns.isdigit() or int(num_patterns) < 1:
-    print("Only input a positive number")
-else:
-    num_patterns = int(num_patterns)
-    turtle_draw = Draw_Shapes(num_patterns)
-    turtle_draw.create_shapes()
+    if not num_patterns.isdigit() or int(num_patterns) < 1 or int(num_patterns) > 5:
+        print("Only positive whole numbers allowed")
+    else:
+        num_patterns = int(num_patterns)
+        turtle_draw = Draw_Shapes(num_patterns)
+        turtle_draw.create_shapes()
+        break
 
 wn = t.Screen()
 wn.mainloop()
-
